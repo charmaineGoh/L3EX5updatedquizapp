@@ -4,11 +4,12 @@ import { StyleSheet, Text, View, ScrollView, Image, Button, Alert, ToastAndroid,
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from "react-native-vector-icons/FontAwesome6";
 
-
 const QuestionBox = ({ label, image, options, selectedValue, onValueChange }) => {
   return (
       <ScrollView style={styles.questionBox}>
-        <Text>{label}</Text>
+        <View style={styles.labelContainer}>
+          <Text style={styles.labelText}>{label}</Text>
+        </View>
         <Image source={image} style={styles.image} />
         <RNPickerSelect
             onValueChange={onValueChange}
@@ -19,6 +20,7 @@ const QuestionBox = ({ label, image, options, selectedValue, onValueChange }) =>
       </ScrollView>
   );
 };
+
 
 const App = () => {
   const questions = [
@@ -68,7 +70,10 @@ const App = () => {
   return (
       <ScrollView style={styles.container}>
         <StatusBar hidden={true} />
-        <Icon name={"paw"} size={20} color={'green'}><Text>Charmaine's Quiz</Text></Icon>
+        <View style={styles.iconContainer}>
+          <Icon name={"paw"} size={24} color={'#4A2511'} />
+          <Text style={styles.titleText}>Charmaine's Quiz</Text>
+        </View>
         {questions.map((question, index) => (
             <QuestionBox
                 key={index}
@@ -79,7 +84,9 @@ const App = () => {
                 onValueChange={(value) => AnswerUpdate(value, index)}
             />
         ))}
-        <Button title="Submit Answers" onPress={Submit} />
+        <View style={styles.buttonContainer}>
+          <Button title="Submit Answers" onPress={Submit} color="#4A2511" />
+        </View>
         <TouchableOpacity onPress={() => ToastAndroid.show("Good luck!", ToastAndroid.SHORT)}>
           <Text style={styles.touchableText}>Good Luck!</Text>
         </TouchableOpacity>
@@ -87,25 +94,76 @@ const App = () => {
   );
 };
 
+// Define styles outside the App component
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
     flex: 1,
+    padding: 20,
+    backgroundColor: '#4b6043',
   },
-  questionBox: {
-    marginBottom: 20,
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-  },
+    questionBox: {
+      marginBottom: 20,
+      backgroundColor: '#4A2511',
+      padding: 15,
+      borderRadius: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    labelContainer: {
+      backgroundColor: 'black', // blue background
+      padding: 10,
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    labelText: {
+      color: '#ffffff', // white text
+      fontWeight: 'bold',
+      fontSize: 16,
+    },
+    image: {
+      width: '100%',
+      height: 200,
+      borderRadius: 10,
+      marginTop: 10,
+    },
+
+
   touchableText: {
     textAlign: 'center',
-    color: 'blue',
-    marginTop: 10,
-    fontSize: 16,
+    color: 'green',
+    marginTop: 15,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
+  iconContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  titleText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#4A2511',
+    marginLeft: 8,
+  },
+  buttonContainer: {
+    marginTop: 15,
+    backgroundColor: 'black', // tomato color for button
+    borderRadius: 10,
+    paddingVertical: 10, // add padding to make the button text centered
+    alignItems: 'center', // center align the button content
+  },
+  labelText: {
+    color: '#fff',             // White color for label text
+    fontSize: 18,              // Optional: increase font size for better readability
+    fontWeight: 'bold',        // Optional: make text bold
+    marginBottom: 10,          // Add some space below the label
+  },
+
 });
 
 export default App;
