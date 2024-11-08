@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#4b6043',
-  },
+    },
     questionBox: {
       marginBottom: 20,
       backgroundColor: '#4A2511',
@@ -113,16 +113,12 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
     labelContainer: {
-      backgroundColor: 'black', // blue background
+      backgroundColor: 'black',
       padding: 10,
       borderRadius: 5,
       alignItems: 'center',
     },
-    labelText: {
-      color: '#ffffff', // white text
-      fontWeight: 'bold',
-      fontSize: 16,
-    },
+
     image: {
       width: '100%',
       height: 200,
@@ -152,16 +148,16 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 15,
-    backgroundColor: 'black', // tomato color for button
+    backgroundColor: 'black',
     borderRadius: 10,
-    paddingVertical: 10, // add padding to make the button text centered
-    alignItems: 'center', // center align the button content
+    paddingVertical: 10,
+    alignItems: 'center',
   },
   labelText: {
-    color: '#fff',             // White color for label text
-    fontSize: 18,              // Optional: increase font size for better readability
-    fontWeight: 'bold',        // Optional: make text bold
-    marginBottom: 10,          // Add some space below the label
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
 
 });
